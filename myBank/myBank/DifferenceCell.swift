@@ -26,4 +26,31 @@ class DifferenceCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    func dateToString(date: Date) -> String{
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM/dd"
+        
+        let dateString = dateFormatter.string(from: date)
+        
+        return dateString
+    }
+    
+    func dataHand(station: Station){
+        self.dateLabel.text = dateToString(date: station.date)
+        self.differenceLabel.text = String(station.difference)
+        self.contentsLabel.text = station.contents
+    }
+    
+}
+
+class Station: NSObject {
+    var date: Date
+    var difference: Int
+    var contents: String
+    
+    init(date: Date, difference: Int, contents: String ) {
+        self.date = date
+        self.difference = difference
+        self.contents = contents
+    }
 }
