@@ -8,14 +8,27 @@
 
 import UIKit
 
-class ChangeViewController: UIViewController {
+class ChangeViewController: UIViewController, UITextFieldDelegate {
 
+    @IBOutlet weak var incomeOrSpend: UISegmentedControl!
+    @IBOutlet weak var moneyLabel: UITextField!
+    @IBOutlet weak var contentsLabel: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-       
+        moneyLabel.delegate = self
+        moneyLabel.keyboardType = UIKeyboardType.numberPad
+        
+        contentsLabel.delegate = self
+        
+        incomeOrSpendSetup()
     }
     
+    func incomeOrSpendSetup() {
+        incomeOrSpend.setTitle("収入", forSegmentAt: 0)
+        incomeOrSpend.setTitle("支出", forSegmentAt: 1)
+    }
 
     
 
