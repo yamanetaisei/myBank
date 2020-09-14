@@ -10,6 +10,11 @@ import UIKit
 
 class DifferenceCell: UITableViewCell {
 
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var differenceLabel: UILabel!
+    @IBOutlet weak var contentsLabel: UILabel!
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
