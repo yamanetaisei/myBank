@@ -56,7 +56,7 @@ class ChangeViewController: UIViewController, UITextFieldDelegate {
             realm.add(newItem)
             try! realm.commitWrite()
             
-            navigationController?.popToRootViewController(animated: true)
+//            navigationController?.popToRootViewController(animated: true)
         }
 
     }

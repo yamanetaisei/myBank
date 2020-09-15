@@ -30,7 +30,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         tableView.delegate = self
         tableView.register(UINib(nibName: "DifferenceCell", bundle: nil), forCellReuseIdentifier: "DifferenceCell")
         
-        refresh()
+        upd()
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -38,12 +38,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "DifferenceCell", for: indexPath) as! DifferenceCell
-        cell.dataHand(station: Station(date: Date(), difference: diffData[indexPath.row].difference, contents: diffData[indexPath.row].contents ))
+        let count = diffData.count - indexPath.row - 1
+        cell.dataHand(station: Station(date: Date(), difference: diffData[count].difference, contents: diffData[count].contents ))
         return cell
     }
     
-    func refresh() {
+    func upd() {
         diffData = realm.objects(DifferenceData.self).map({ $0 })
         tableView.reloadData()
     }
