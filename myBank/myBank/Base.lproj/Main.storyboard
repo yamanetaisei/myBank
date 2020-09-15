@@ -87,7 +87,18 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="9SQ-he-cTI"/>
                     </view>
-                    <navigationItem key="navigationItem" id="jqc-4C-7FF"/>
+                    <navigationItem key="navigationItem" id="jqc-4C-7FF">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="Pmb-Lm-BTd">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="zc2-cX-C35">
+                                <rect key="frame" x="276" y="7" width="83" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Confirm"/>
+                            </button>
+                            <connections>
+                                <action selector="confirmBtn:" destination="mdJ-e9-vdd" id="PtX-Jf-xd8"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="contentsLabel" destination="8kd-jW-HYq" id="IQ3-1B-cAM"/>
                         <outlet property="incomeOrSpend" destination="yPf-zR-dRS" id="zfP-bj-nCX"/>
