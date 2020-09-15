@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -14,8 +15,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet weak var totalLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
+    private let realm = try! Realm()
+    private var total = TotalMoney()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        totalLabel.text = String(total.total)
+        
         tableView.rowHeight = 150
         tableView.dataSource = self
         tableView.delegate = self
