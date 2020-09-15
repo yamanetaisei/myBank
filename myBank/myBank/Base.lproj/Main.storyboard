@@ -42,7 +42,7 @@
                     <navigationItem key="navigationItem" id="cos-W5-Bse">
                         <barButtonItem key="rightBarButtonItem" title="Item" image="dollarsign.circle" catalog="system" id="miT-Br-obi">
                             <connections>
-                                <segue destination="mdJ-e9-vdd" kind="show" id="K6s-3B-Qto"/>
+                                <action selector="changeBtn:" destination="BYZ-38-t0r" id="G5y-NA-ff5"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -58,7 +58,7 @@
         <!--Change View Controller-->
         <scene sceneID="pxj-rz-KBS">
             <objects>
-                <viewController id="mdJ-e9-vdd" customClass="ChangeViewController" customModule="myBank" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="change" useStoryboardIdentifierAsRestorationIdentifier="YES" id="mdJ-e9-vdd" customClass="ChangeViewController" customModule="myBank" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nKP-Xd-CcJ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

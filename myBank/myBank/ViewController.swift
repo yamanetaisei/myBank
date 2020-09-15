@@ -49,5 +49,17 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         diffData = realm.objects(DifferenceData.self).map({ $0 })
         tableView.reloadData()
     }
+    @IBAction func changeBtn(_ sender: Any) {
+        
+        guard let vc = storyboard?.instantiateViewController(identifier: "change") as? ChangeViewController else {
+            return
+        }
+        
+        vc.completionHandoler = { [weak self] in
+            self?.upd()
+        }
+        
+        navigationController?.pushViewController(vc, animated: true)
+    }
 }
 

@@ -15,6 +15,8 @@ class ChangeViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var moneyLabel: UITextField!
     @IBOutlet weak var contentsLabel: UITextField!
     
+    public var completionHandoler: (() -> Void)?
+    
     let realm = try! Realm()
     
     override func viewDidLoad() {
@@ -56,7 +58,9 @@ class ChangeViewController: UIViewController, UITextFieldDelegate {
             realm.add(newItem)
             try! realm.commitWrite()
             
-//            navigationController?.popToRootViewController(animated: true)
+            completionHandoler?()
+            
+            navigationController?.popToRootViewController(animated: true)
         }
 
     }
