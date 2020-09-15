@@ -93,10 +93,10 @@
                                 <rect key="frame" x="276" y="7" width="83" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Confirm"/>
+                                <connections>
+                                    <action selector="confirmBtn:" destination="mdJ-e9-vdd" eventType="touchUpInside" id="dS6-50-TJY"/>
+                                </connections>
                             </button>
-                            <connections>
-                                <action selector="confirmBtn:" destination="mdJ-e9-vdd" id="PtX-Jf-xd8"/>
-                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>

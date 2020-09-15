@@ -39,7 +39,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "DifferenceCell", for: indexPath) as! DifferenceCell
-//        cell.dataHand(station: Station(date: Date(), difference: 300000, contents: "Mac"))
+        cell.dataHand(station: Station(date: Date(), difference: diffData[indexPath.row].difference, contents: diffData[indexPath.row].contents ))
         return cell
     }
     
@@ -47,6 +47,5 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         diffData = realm.objects(DifferenceData.self).map({ $0 })
         tableView.reloadData()
     }
-
 }
 

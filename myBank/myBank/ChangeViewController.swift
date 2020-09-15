@@ -7,12 +7,15 @@
 //
 
 import UIKit
+import RealmSwift
 
 class ChangeViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var incomeOrSpend: UISegmentedControl!
     @IBOutlet weak var moneyLabel: UITextField!
     @IBOutlet weak var contentsLabel: UITextField!
+    
+    let realm = try! Realm()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,7 +41,23 @@ class ChangeViewController: UIViewController, UITextFieldDelegate {
         self.view.endEditing(true)
     }
 
+    
     @IBAction func confirmBtn(_ sender: Any) {
+        print("tap")
         
+        if let money = moneyLabel.text, !money.isEmpty {
+            let contents = contentsLabel.text
+            
+            realm.beginWrite()
+            let newItem = DifferenceData()
+            newItem.difference = Int(money)!
+            newItem.contents = contents ?? ""
+            newItem.date = Date()
+            realm.add(newItem)
+            try! realm.commitWrite()
+            
+            navigationController?.popToRootViewController(animated: true)
+        }
+
     }
 }
