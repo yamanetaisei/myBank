@@ -17,11 +17,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     private let realm = try! Realm()
     private var total = TotalMoney()
+    private var diffData = [DifferenceData]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         totalLabel.text = String(total.total)
+        diffData = realm.objects(DifferenceData.self).map({ $0 })
         
         tableView.rowHeight = 150
         tableView.dataSource = self
@@ -30,15 +32,19 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return diffData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "DifferenceCell", for: indexPath) as! DifferenceCell
-        cell.dataHand(station: Station(date: Date(), difference: 300000, contents: "Mac"))
+//        cell.dataHand(station: Station(date: Date(), difference: 300000, contents: "Mac"))
         return cell
     }
     
+    func refresh() {
+        diffData = realm.objects(DifferenceData.self).map({ $0 })
+        tableView.reloadData()
+    }
 
 }
 
