@@ -43,10 +43,7 @@ class ChangeViewController: UIViewController, UITextFieldDelegate {
         self.view.endEditing(true)
     }
 
-    
-    @IBAction func confirmBtn(_ sender: Any) {
-        print("tap")
-        
+    func defineDiff() {
         if let money = moneyLabel.text, !money.isEmpty {
             let contents = contentsLabel.text
             
@@ -57,11 +54,17 @@ class ChangeViewController: UIViewController, UITextFieldDelegate {
             newItem.date = Date()
             realm.add(newItem)
             try! realm.commitWrite()
-            
-            completionHandoler?()
-            
-            navigationController?.popToRootViewController(animated: true)
         }
-
+    }
+    
+    @IBAction func confirmBtn(_ sender: Any) {
+        print("tap")
+        
+        defineDiff()
+            
+        completionHandoler?()
+            
+        navigationController?.popToRootViewController(animated: true)
     }
 }
+
