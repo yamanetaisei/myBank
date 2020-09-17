@@ -68,7 +68,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         var total = 0
         
         for num in 0..<diffData.count {
-            total += diffData[num].difference
+            
+            if diffData[num].addOrSubtraction == true{
+                total += diffData[num].difference
+            }else if diffData[num].addOrSubtraction == false{
+                total -= diffData[num].difference
+            }
         }
         
         return total

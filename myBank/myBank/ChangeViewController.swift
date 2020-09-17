@@ -52,6 +52,16 @@ class ChangeViewController: UIViewController, UITextFieldDelegate {
             newItem.difference = Int(money)!
             newItem.contents = contents ?? ""
             newItem.date = Date()
+            
+            switch incomeOrSpend.selectedSegmentIndex {
+            case 0:
+                newItem.addOrSubtraction = true
+            case 1:
+                newItem.addOrSubtraction = false
+            default:
+                print("default")
+            }
+            
             realm.add(newItem)
             try! realm.commitWrite()
         }

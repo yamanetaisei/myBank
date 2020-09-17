@@ -13,4 +13,5 @@ class DifferenceData: Object {
     @objc dynamic var date: Date = Date()
     @objc dynamic var difference: Int = 0
     @objc dynamic var contents: String = ""
+    @objc dynamic var addOrSubtraction: Bool = true
 }
