@@ -16,13 +16,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet weak var tableView: UITableView!
     
     private let realm = try! Realm()
-    private var total = TotalMoney()
+//    private var total = TotalMoney()
     private var diffData = [DifferenceData]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        totalLabel.text = String(total.total)
+        totalLabel.text = String(getTotal())
         diffData = realm.objects(DifferenceData.self).map({ $0 })
         
         tableView.rowHeight = 150
@@ -48,6 +48,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func upd() {
         diffData = realm.objects(DifferenceData.self).map({ $0 })
         tableView.reloadData()
+        totalLabel.text = String(getTotal())
     }
     @IBAction func changeBtn(_ sender: Any) {
         
@@ -60,6 +61,17 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
         
         navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func getTotal() -> Int {
+        
+        var total = 0
+        
+        for num in 0..<diffData.count {
+            total += diffData[num].difference
+        }
+        
+        return total
     }
 }
 
