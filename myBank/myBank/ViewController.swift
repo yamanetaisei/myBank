@@ -16,7 +16,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet weak var tableView: UITableView!
     
     private let realm = try! Realm()
-//    private var total = TotalMoney()
+
     private var diffData = [DifferenceData]()
     
     override func viewDidLoad() {
