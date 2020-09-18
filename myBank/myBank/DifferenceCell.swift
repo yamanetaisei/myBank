@@ -39,6 +39,11 @@ class DifferenceCell: UITableViewCell {
     func dataHand(station: Station){
         self.dateLabel.text = dateToString(date: station.date)
         self.differenceLabel.text = String(station.difference)
+        if station.checker == true {
+            self.differenceLabel.textColor = .green
+        } else {
+            self.differenceLabel.textColor = .red
+        }
         self.contentsLabel.text = station.contents
     }
     
@@ -48,10 +53,12 @@ class Station: NSObject {
     var date: Date
     var difference: Int
     var contents: String
+    var checker: Bool
     
-    init(date: Date, difference: Int, contents: String ) {
+    init(date: Date, difference: Int, contents: String, checker: Bool ) {
         self.date = date
         self.difference = difference
         self.contents = contents
+        self.checker = checker
     }
 }

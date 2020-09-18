@@ -50,7 +50,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "DifferenceCell", for: indexPath) as! DifferenceCell
         let count = diffData.count - indexPath.row - 1
-        cell.dataHand(station: Station(date: Date(), difference: diffData[count].difference, contents: diffData[count].contents ))
+        cell.dataHand(station: Station(date: Date(), difference: diffData[count].difference, contents: diffData[count].contents, checker: diffData[count].addOrSubtraction ))
         cell.backgroundColor = UIColor(hex: "#3a4660")
         return cell
     }
