@@ -21,11 +21,15 @@ class ChangeViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        view.backgroundColor = UIColor(hex: "#3a4660")
 
         moneyLabel.delegate = self
         moneyLabel.keyboardType = UIKeyboardType.numberPad
         
         contentsLabel.delegate = self
+        
+        self.navigationController?.navigationBar.barTintColor = UIColor(hex: "#3a4660")
         
         incomeOrSpendSetup()
     }

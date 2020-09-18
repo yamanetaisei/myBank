@@ -19,16 +19,25 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
     private var diffData = [DifferenceData]()
     
+    let diffCell = DifferenceCell()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        view.backgroundColor = UIColor(hex: "#3a4660")
         
         totalLabel.text = String(getTotal())
         diffData = realm.objects(DifferenceData.self).map({ $0 })
         
+        totalLabel.textColor = .white
+        
         tableView.rowHeight = 150
+        tableView.backgroundColor = UIColor(hex: "#3a4660")
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(UINib(nibName: "DifferenceCell", bundle: nil), forCellReuseIdentifier: "DifferenceCell")
+        
+        self.navigationController?.navigationBar.barTintColor = UIColor(hex: "#3a4660")
         
         upd()
     }
@@ -42,6 +51,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let cell = tableView.dequeueReusableCell(withIdentifier: "DifferenceCell", for: indexPath) as! DifferenceCell
         let count = diffData.count - indexPath.row - 1
         cell.dataHand(station: Station(date: Date(), difference: diffData[count].difference, contents: diffData[count].contents ))
+        cell.backgroundColor = UIColor(hex: "#3a4660")
         return cell
     }
     
