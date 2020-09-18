@@ -26,10 +26,13 @@ class ChangeViewController: UIViewController, UITextFieldDelegate {
 
         moneyLabel.delegate = self
         moneyLabel.keyboardType = UIKeyboardType.numberPad
-        
+        moneyLabel.backgroundColor = UIColor.gray
+                
         contentsLabel.delegate = self
+        contentsLabel.backgroundColor = UIColor.gray
         
         self.navigationController?.navigationBar.barTintColor = UIColor(hex: "#3a4660")
+        
         
         incomeOrSpendSetup()
     }

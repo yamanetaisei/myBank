@@ -39,6 +39,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         self.navigationController?.navigationBar.barTintColor = UIColor(hex: "#3a4660")
         
+        self.navigationController?.navigationBar.tintColor = .yellow
+        
         upd()
     }
 
