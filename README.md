@@ -16,7 +16,7 @@
 お店で会計を終えた直後を想定して作りました。よって、データの更新をできる限りスピーディーに行えるようにUIの見やすさ・使いやすさを重視しました。
 
 ## デモ
-[WIP]
+詳しい動作画面は[こちら](https://drive.google.com/file/d/10h0MGf0-6b29z5xF4OhD9nGZC7Qgx--g/view?usp=sharing)
 
 ## 使用ライブラリ
 [realm](https://realm.io/)
