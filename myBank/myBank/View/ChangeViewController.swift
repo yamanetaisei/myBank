@@ -12,8 +12,19 @@ import RealmSwift
 class ChangeViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var incomeOrSpend: UISegmentedControl!
-    @IBOutlet weak var moneyLabel: UITextField!
-    @IBOutlet weak var contentsLabel: UITextField!
+    @IBOutlet weak var moneyLabel: UITextField! {
+        didSet {
+            moneyLabel.delegate = self
+            moneyLabel.keyboardType = UIKeyboardType.numberPad
+            moneyLabel.backgroundColor = UIColor.gray
+        }
+    }
+    @IBOutlet weak var contentsLabel: UITextField! {
+        didSet {
+            contentsLabel.delegate = self
+            contentsLabel.backgroundColor = UIColor.gray
+        }
+    }
     
     public var completionHandoler: (() -> Void)?
     
@@ -21,19 +32,8 @@ class ChangeViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         view.backgroundColor = UIColor(hex: "#3a4660")
-
-        moneyLabel.delegate = self
-        moneyLabel.keyboardType = UIKeyboardType.numberPad
-        moneyLabel.backgroundColor = UIColor.gray
-                
-        contentsLabel.delegate = self
-        contentsLabel.backgroundColor = UIColor.gray
-        
         self.navigationController?.navigationBar.barTintColor = UIColor(hex: "#3a4660")
-        
-        
         incomeOrSpendSetup()
     }
     

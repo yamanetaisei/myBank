@@ -12,8 +12,20 @@ import RealmSwift
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     
-    @IBOutlet weak var totalLabel: UILabel!
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var totalLabel: UILabel! {
+        didSet {
+            totalLabel.textColor = .white
+        }
+    }
+    @IBOutlet weak var tableView: UITableView! {
+        didSet {
+            tableView.rowHeight = 150
+            tableView.backgroundColor = UIColor(hex: "#3a4660")
+            tableView.dataSource = self
+            tableView.delegate = self
+            tableView.register(UINib(nibName: "DifferenceCell", bundle: nil), forCellReuseIdentifier: "DifferenceCell")
+        }
+    }
     
     private let realm = try! Realm()
 
@@ -23,24 +35,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         view.backgroundColor = UIColor(hex: "#3a4660")
-        
         totalLabel.text = String(getTotal())
         diffData = realm.objects(DifferenceData.self).map({ $0 })
-        
-        totalLabel.textColor = .white
-        
-        tableView.rowHeight = 150
-        tableView.backgroundColor = UIColor(hex: "#3a4660")
-        tableView.dataSource = self
-        tableView.delegate = self
-        tableView.register(UINib(nibName: "DifferenceCell", bundle: nil), forCellReuseIdentifier: "DifferenceCell")
-        
         self.navigationController?.navigationBar.barTintColor = UIColor(hex: "#3a4660")
-        
         self.navigationController?.navigationBar.tintColor = .yellow
-        
         upd()
     }
 
